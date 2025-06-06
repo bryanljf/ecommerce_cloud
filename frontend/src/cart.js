@@ -8,7 +8,7 @@ const Cart = ({ userID }) => {
   // Função para buscar os detalhes do produto (como nome) com base no ID do produto
   const fetchProductDetails = async (productID) => {
     try {
-      const response = await axios.get(`http://localhost:8080/products/${productID}`);
+      const response = await axios.get(`${process.env.REACT_APP_API_URL}/products/${productID}`);
       return response.data; // Retorna os dados do produto
     } catch (error) {
       console.error('Erro ao buscar detalhes do produto:', error);
@@ -25,7 +25,7 @@ const Cart = ({ userID }) => {
       };
 
       // Buscar os itens do carrinho
-      const response = await axios.get(`http://localhost:8080/cart/${userID}`, {
+      const response = await axios.get(`${process.env.REACT_APP_API_URL}/cart/${userID}`, {
         headers: headers,
       });
       const cartItems = response.data;
@@ -56,7 +56,7 @@ const Cart = ({ userID }) => {
         };
   
         // Envia a requisição para remover o item
-        await axios.delete(`http://localhost:8080/cart/remove/${cartID}`, {
+        await axios.delete(`${process.env.REACT_APP_API_URL}/cart/remove/${cartID}`, {
           headers: headers,
         });
   

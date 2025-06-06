@@ -23,7 +23,7 @@ const UserAccountForm = ({ onAccountCreated }) => {
         e.preventDefault();
         
         try {
-          const response = await axios.post('http://localhost:8080/users/newuser', formData);
+          const response = await axios.post(`${process.env.REACT_APP_API_URL}/users/newuser`, formData);
           
           if(response.status === 200){
                 setResponseMessage('Conta criada com sucesso! Redirecionando para a página de Login [...]');

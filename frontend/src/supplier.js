@@ -16,7 +16,7 @@ const Supplier = () => {
         // Carregar produtos
     const fetchProducts = async () => {
         try {
-            const response = await axios.get('http://localhost:8080/products/all');
+            const response = await axios.get(`${process.env.REACT_APP_API_URL}/products/all`);
             setProducts(response.data); // Assume que a resposta é uma lista de produtos
         } catch (error) {
             console.error('Erro ao carregar produtos:', error);
@@ -30,7 +30,7 @@ const Supplier = () => {
             'authorization': `Bearer ${Token}`
             }
         try {
-            const response = await axios.get('http://localhost:8080/suppliers/all', { headers: headers }); 
+            const response = await axios.get(`${process.env.REACT_APP_API_URL}suppliers/all`, { headers: headers }); 
                setSuppliers(response.data); 
         } catch (error) {
             console.error('Erro ao carregar fornecedores:', error);
@@ -59,7 +59,7 @@ const Supplier = () => {
                 'Authorization': `Bearer ${Token}`
             };
 
-            const response = await axios.post('http://localhost:8080/suppliers/newsupplier', formData, { headers });
+            const response = await axios.post(`${process.env.REACT_APP_API_URL}/suppliers/newsupplier`, formData, { headers });
 
             if (response.status === 200) {
                 setResponseMessage('Fornecedor criado com sucesso!');

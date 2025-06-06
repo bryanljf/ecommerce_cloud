@@ -21,7 +21,7 @@ const LoginForm = ({ onLogin }) => {
         e.preventDefault();
         
         try {
-            const response = await axios.post('http://localhost:8080/users/login', formData);
+            const response = await axios.post(`${process.env.REACT_APP_API_URL}/users/login`, formData);
             
             if (response.status === 200) {
                 localStorage.setItem('Token', response.data.Token);

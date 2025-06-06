@@ -29,7 +29,7 @@ const CreateProductForm = () => {
                 'authorization': `Bearer ${Token}`
               }
 
-            const response = await axios.post('http://localhost:8080/products/newproduct', formData, {
+            const response = await axios.post(`${process.env.REACT_APP_API_URL}/products/newproduct`, formData, {
                 headers: headers
             });
           

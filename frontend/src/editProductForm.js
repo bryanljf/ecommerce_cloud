@@ -15,7 +15,7 @@ const EditProductForm = ({ productId }) => {
   // Função para buscar os dados do produto
   const fetchProductDetails = async () => {
     try {
-      const response = await axios.get(`http://localhost:8080/products/${productId}`);
+      const response = await axios.get(`${process.env.REACT_APP_API_URL}/products/${productId}`);
       setFormData(response.data); 
       setLoading(false); 
     } catch (error) {
@@ -43,7 +43,7 @@ const EditProductForm = ({ productId }) => {
       const token = localStorage.getItem('Token');
       const headers = { Authorization: `Bearer ${token}` };
 
-      await axios.put(`http://localhost:8080/products/${productId}`, formData, { headers });
+      await axios.put(`${process.env.REACT_APP_API_URL}/products/${productId}`, formData, { headers });
       setResponseMessage('Produto atualizado com sucesso!');
     } catch (error) {
       console.error('Erro ao atualizar produto:', error);
